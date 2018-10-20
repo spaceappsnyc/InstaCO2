@@ -1,0 +1,57 @@
+{
+  "name": "spaceapps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "babel": {
+    "presets": [
+      "react",
+      "env",
+      "stage-2"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "express-sessions": "^1.0.6",
+    "heroku": "^7.16.0",
+    "jwt-simple": "^0.5.5",
+    "morgan": "^1.9.1",
+    "npm": "^6.4.1",
+    "pg": "^7.4.3",
+    "react": "^16.5.2",
+    "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "sequelize": "^4.38.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "webpack": "^3.9.1",
+    "webpack-dev-server": "^2.9.5"
+  },
+  "scripts": {
+    "postinstall": "npm run webpack",
+    "start": "node server/index.js",
+    "webpack": "./node_modules/webpack/bin/webpack.js",
+    "start:dev": "npm run webpack -- --watch --mode=development & DATABASE_URL=postgres://localhost/acme_store nodemon server/index.js --ignore src/ --ignore dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
