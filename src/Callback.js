@@ -22,13 +22,13 @@ export default class Callback extends Component {
       })
   }
 
-
-
   calculateScore(images) {
+    console.log('Images', images)
     const total = images.reduce((sum, image) => {
       if (image.footPrint) sum += image.footPrint.value;
       return sum
     }, 0)
+    console.log("Total", total)
     return total / images.length
   }
 
