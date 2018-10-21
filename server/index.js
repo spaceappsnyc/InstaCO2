@@ -7,6 +7,10 @@ const jwt = require('jwt-simple');
 const ejs = require('ejs');
 const axios = require('axios');
 const request = require('request');
+const utils = require('./utils');
+
+//set environment variables from .env
+require('dotenv').config();
 
 process.env.INSTAGRAM_CLIENT_ID = '080eb63008dd41d0bcd80a1d6208d372';
 process.env.INSTAGRAM_CLIENT_SECRET = '1e770397bfce4aafbc8f5ef0563066b8';
