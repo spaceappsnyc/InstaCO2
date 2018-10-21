@@ -45,7 +45,6 @@ const utils = {
   },
   processConcepts: function (clarifaiResponse) {
     return clarifaiResponse.outputs.reduce((sum, output) => {
-      console.log(output.data.concepts);
       return sum + this.calculateFootPrint(output.data.concepts)
     }, 0)
   },
@@ -73,7 +72,7 @@ const test = [
   "https://scontent.cdninstagram.com/vp/5dcddf31668c2acda3610118c4977075/5C4CA330/t51.2885-15/sh0.08/e35/s640x640/23735409_341278976347625_7191285376890175488_n.jpg",
   "https://scontent.cdninstagram.com/vp/63532dfd6c5c353a9c288084adddf871/5C596572/t51.2885-15/sh0.08/e35/s640x640/23735294_507194306315727_5305812716974243840_n.jpg"
 ];
-utils.getScore(test)
-  .then(score => console.log(score))
+// utils.getScore(test)
+//   .then(score => console.log(score))
 
 module.exports = utils;
