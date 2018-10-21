@@ -1,0 +1,44 @@
+{
+  "dairy": {
+    "value": 20
+  },
+  "meat": {
+    "value": 30
+  },
+  "lamb": {
+    "value": 39.2
+  },
+  "beef": {
+    "value": 27
+  },
+  "cheese": {
+    "value": 13.5
+  },
+  "pork": {
+    "value": 12.1
+  },
+  "turkey": {
+    "value": 10.9
+  },
+  "chicken": {
+    "value": 6.9
+  },
+  "tuna": {
+    "value": 6.1
+  },
+  "eggs": {
+    "value": 4.8
+  },
+  "potato": {
+    "value": 2.9
+  },
+  "rice": {
+    "value": 2.7
+  },
+  "nuts": {
+    "value": 2.3
+  },
+  "milk": {
+    "value": 2
+  }
+}

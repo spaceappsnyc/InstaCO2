@@ -9,8 +9,7 @@ const axios = require('axios');
 
 process.env.INSTAGRAM_CLIENT_ID = '080eb63008dd41d0bcd80a1d6208d372';
 process.env.INSTAGRAM_CLIENT_SECRET = '1e770397bfce4aafbc8f5ef0563066b8';
-process.env.INSTAGRAM_REDIRECT_URI =
-  'http://localhost:3000/api/auth/instagram/callback';
+process.env.INSTAGRAM_REDIRECT_URI = 'http://localhost:3000/api/auth/instagram/callback';
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -21,7 +20,7 @@ app.use('/dist', express.static(path.join(__dirname, '../dist')));
 app.get('/api/auth/instagram', (req, res, next) => {
   const url = `https://api.instagram.com/oauth/authorize/?client_id=${
     process.env.INSTAGRAM_CLIENT_ID
-  }&redirect_uri=${process.env.INSTAGRAM_REDIRECT_URI}&response_type=code`;
+    }&redirect_uri=${process.env.INSTAGRAM_REDIRECT_URI}&response_type=code`;
   res.redirect(url);
 });
 
