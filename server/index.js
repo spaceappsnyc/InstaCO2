@@ -9,7 +9,6 @@ const axios = require('axios');
 const request = require('request');
 const utils = require('./utils');
 
-
 try {
   Object.assign(process.env, require('../.env'));
 } catch (ex) {

@@ -1,8 +1,14 @@
 const Clarifai = require('clarifai');
+try {
+  Object.assign(process.env, require('../.env'));
+} catch (ex) {
+  console.log(ex);
+}
 const clarifai = new Clarifai.App({
-  apiKey: 'd3fc32cb4fbd4d20a8dc057208d6ce4f'
+  apiKey: process.env.CLARIFAI_KEY
 })
 const carbonRegistery = require('./fakeCarbonData.json')
+console.log(process.env.CLARIFAI_KEY)
 
 const mapCarbonDataToImageUrls = (response) => (
   response.outputs.map(output => {
