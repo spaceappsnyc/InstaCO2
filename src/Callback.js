@@ -37,8 +37,9 @@ export default class Callback extends Component {
     let minion;
     // if (score < 2) minion = 
     return (
-      <div class="callback_page">
+      <div class="callback_page box">
         <h1>Your Score: {this.calculateScore(this.state.images)}</h1>
+        <div id="level" class="box level_0"></div>
       </div>
     );
   }

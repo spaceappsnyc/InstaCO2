@@ -1,15 +1,16 @@
 #root {
 	background-color: aqua;
+	position: absolute;
+}
+
+.box {
 	width: 375px;
 	height: 667px;
-	position: absolute;
 }
 
 .login_page {
 	position: relative;
-	width: 375px;
-	height: 667px;
-	background-image: url('http://localhost:3000/img/login_page_bg.png');
+	background-image: url('/img/login_page_bg.png');
 }
 
 .login_button {
@@ -22,9 +23,22 @@
 }
 
 .callback_page {
-	position: relative;
-	width: 375px;
-	height: 667px;
 	background-image: url('/img/callback_page_bg.gif');
+}
+
+.level_0 {
+	background-image: url('/img/level_0.png');
+}
+.level_1 {
+	background-image: url('/img/level_1.png');
+}
+.level_2 {
+	background-image: url('/img/level_2.png');
+}
+.level_3 {
+	background-image: url('/img/level_3.png');
+}
+.level_4 {
+	background-image: url('/img/level_4.png');
 }
 
