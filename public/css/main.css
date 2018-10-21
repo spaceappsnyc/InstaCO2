@@ -21,3 +21,9 @@
     line-height: 3;
 	background-image: url('/img/login_button.png');
 }
+
+.callback_page {
+	position: relative;
+	background-image: url('/img/callback_page_bg.png');
+}
+
