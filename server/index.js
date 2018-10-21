@@ -7,6 +7,10 @@ const jwt = require('jwt-simple');
 const ejs = require('ejs');
 const axios = require('axios');
 const request = require('request');
+const utils = require('./utils');
+
+//set environment variables from .env
+require('dotenv').config();
 
 try {
   Object.assign(process.env, require('../.env'));

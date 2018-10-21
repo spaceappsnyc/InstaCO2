@@ -40,5 +40,8 @@
   },
   "milk": {
     "value": 2
+  },
+  "snowboard": {
+    "value": 30
   }
 }
