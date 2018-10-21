@@ -7,16 +7,10 @@ const jwt = require('jwt-simple');
 const ejs = require('ejs');
 const axios = require('axios');
 const request = require('request');
-<<<<<<< HEAD
 const analyzeImages = require('./utils');
 const port = process.env.PORT || 3000
-=======
-const utils = require('./utils');
-const PORT = process.env.PORT || 3000;
 
-//set environment variables from .env
->>>>>>> c679df430e8250a56384a7765e9674ff0756a41c
-
+let imageList;
 try {
   Object.assign(process.env, require('../.env'));
 } catch (ex) {
@@ -24,6 +18,7 @@ try {
 }
 
 app.use(morgan('dev'));
+app.use(bodyParser.json());
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '../public')));
@@ -39,6 +34,7 @@ app.post('/api/analyze', (req, res, next) => {
 })
 
 app.get('/api/auth/instagram', (req, res, next) => {
+  console.log(req);
   const url = `https://api.instagram.com/oauth/authorize/?client_id=${
     process.env.INSTAGRAM_CLIENT_ID
     }&redirect_uri=${process.env.INSTAGRAM_REDIRECT_URI}&response_type=code`;
@@ -46,7 +42,7 @@ app.get('/api/auth/instagram', (req, res, next) => {
 });
 
 app.get('/api/auth/instagram/callback/', async (req, res, next) => {
-  console.log('callbackkk');
+  console.log('im hit!')
   try {
     const tokenReq = {
       client_id: process.env.INSTAGRAM_CLIENT_ID,
@@ -63,9 +59,9 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
     };
 
     function callback(error, response, body) {
+      console.log(body);
       if (!error && response.statusCode == 200) {
         const token = JSON.parse(body)['access_token'];
-        console.log('callback2');
         axios
           .get(
             `https://api.instagram.com/v1/users/self/media/recent?access_token=${token}`
@@ -74,8 +70,9 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
             const imagesUrlArray = resp.data['data'].map(
               img => img['images']['standard_resolution']['url']
             );
-            utils.getScore(imagesUrlArray).then(score => console.log(score));
-            res.json(imagesUrlArray);
+            const index = path.join(__dirname, '../public/index.ejs');
+            imageList = imagesUrlArray
+            res.render(index);
           })
           .catch(next);
       }
@@ -86,15 +83,11 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
   }
 });
 
-const index = path.join(__dirname, '../public/index.html');
+const index = path.join(__dirname, '../public/index.ejs');
 app.get('/', async (req, res) => {
-  res.render(index, { token: req.query.token });
+  res.render(index, { images: 'holder' });
 });
 
-<<<<<<< HEAD
 app.listen(port, () => {
-=======
-app.listen(PORT, () => {
->>>>>>> c679df430e8250a56384a7765e9674ff0756a41c
   console.log(`listening on port 3000..`);
 });
