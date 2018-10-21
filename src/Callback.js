@@ -43,7 +43,7 @@ export default class Callback extends Component {
 
     return (
       <div class="callback_page box">
-        <h1>Your Score: {this.calculateScore(this.state.images)}</h1>
+        {/* <h1>Your Score: {this.calculateScore(this.state.images)}</h1> */}
         <div id="level" class={`box ${level}`}></div>
       </div>
     );
