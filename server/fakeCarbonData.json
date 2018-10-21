@@ -41,9 +41,6 @@
   "milk": {
     "value": 2
   },
-  "snowboard": {
-    "value": 30
-  },
   "bicycle": {
     "value": -10
   },
@@ -58,5 +55,8 @@
   },
   "bus": {
     "value": -20
+  },
+  "salad": {
+    "value": 1
   }
 }

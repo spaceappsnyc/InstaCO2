@@ -8,6 +8,7 @@ const ejs = require('ejs');
 const axios = require('axios');
 const request = require('request');
 const analyzeImages = require('./utils');
+const port = process.env.PORT || 3000
 
 let imageList;
 try {
@@ -29,7 +30,7 @@ app.get('/api/images', (req, res, next) => {
 
 app.post('/api/analyze', (req, res, next) => {
   analyzeImages(req.body.images)
-    .then(images => res.json(images))
+    .then(images => res.json)
 })
 
 app.get('/api/auth/instagram', (req, res, next) => {
@@ -87,6 +88,6 @@ app.get('/', async (req, res) => {
   res.render(index, { images: 'holder' });
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log(`listening on port 3000..`);
 });
