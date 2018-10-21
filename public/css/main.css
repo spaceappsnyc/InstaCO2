@@ -1,10 +1,11 @@
-body {
+#root {
 	background-color: aqua;
+	width: 375px;
+	height: 667px;
+	position: absolute;
 }
 
 .login_page {
-	width: 375px;
-	height: 667px;
 	position: relative;
 	background-image: url('/img/login_page_bg.png');
 }
