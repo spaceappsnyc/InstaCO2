@@ -8,14 +8,14 @@ const ejs = require('ejs');
 const axios = require('axios');
 const request = require('request');
 const analyzeImages = require('./utils');
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 
-let imageList;
-try {
-  Object.assign(process.env, require('../.env'));
-} catch (ex) {
-  console.log(ex);
-}
+// let imageList;
+// try {
+//   Object.assign(process.env, require('../.env'));
+// } catch (ex) {
+//   console.log(ex);
+// }
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -25,24 +25,23 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 app.get('/api/images', (req, res, next) => {
-  res.json(imageList)
-})
+  res.json(imageList);
+});
 
 app.post('/api/analyze', (req, res, next) => {
-  analyzeImages(req.body.images)
-    .then(images => res.json)
-})
+  analyzeImages(req.body.images).then(images => res.json);
+});
 
 app.get('/api/auth/instagram', (req, res, next) => {
   console.log(req);
   const url = `https://api.instagram.com/oauth/authorize/?client_id=${
     process.env.INSTAGRAM_CLIENT_ID
-    }&redirect_uri=${process.env.INSTAGRAM_REDIRECT_URI}&response_type=code`;
+  }&redirect_uri=${process.env.INSTAGRAM_REDIRECT_URI}&response_type=code`;
   res.redirect(url);
 });
 
 app.get('/api/auth/instagram/callback/', async (req, res, next) => {
-  console.log('im hit!')
+  console.log('im hit!');
   try {
     const tokenReq = {
       client_id: process.env.INSTAGRAM_CLIENT_ID,
@@ -71,7 +70,7 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
               img => img['images']['standard_resolution']['url']
             );
             const index = path.join(__dirname, '../public/index.ejs');
-            imageList = imagesUrlArray
+            imageList = imagesUrlArray;
             res.render(index);
           })
           .catch(next);
