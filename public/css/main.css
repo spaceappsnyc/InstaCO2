@@ -3,7 +3,7 @@
 	position: absolute;
 }
 
-.box {
+#level, .box {
 	width: 375px;
 	height: 667px;
 }
