@@ -44,6 +44,7 @@ export default class Callback extends Component {
 
   render() {
     const score = this.calculateScore(this.state.images);
+    console.log("Score:", score)
     setTimeout(() => {
       this.getLevel(score)
     }, 2000)
