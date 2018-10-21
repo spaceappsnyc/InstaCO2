@@ -12,10 +12,11 @@ const utils = require('./utils');
 //set environment variables from .env
 require('dotenv').config();
 
-process.env.INSTAGRAM_CLIENT_ID = '080eb63008dd41d0bcd80a1d6208d372';
-process.env.INSTAGRAM_CLIENT_SECRET = '1e770397bfce4aafbc8f5ef0563066b8';
-process.env.INSTAGRAM_REDIRECT_URI =
-  'http://localhost:3000/api/auth/instagram/callback';
+try {
+  Object.assign(process.env, require('../.env'));
+} catch (ex) {
+  console.log(ex);
+}
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -52,7 +53,7 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
         const token = JSON.parse(body)['access_token'];
         axios
           .get(
-            `https://api.instagram.com/v1/users/self/media/recent?access_token=${token}&count=20`
+            `https://api.instagram.com/v1/users/self/media/recent?access_token=${token}&max_id=5`
           )
           .then(resp => {
             const imagesUrlArray = resp.data['data'].map(
