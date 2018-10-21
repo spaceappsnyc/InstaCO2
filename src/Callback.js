@@ -7,7 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 export default class Callback extends Component {
   constructor() {
     super();
-    this.state = { images: [] };
+    this.state = { images: [], analyzed: [] };
   }
 
   componentDidMount() {
@@ -17,7 +17,7 @@ export default class Callback extends Component {
         this.setState({ images })
         axios.post('/api/analyze', { images })
           .then(response => response.data)
-          .then(images => this.setState({ images }))
+          .then(analyzed => this.setState({ analyzed }))
           .catch(err => console.log(err))
       })
   }
@@ -45,9 +45,11 @@ export default class Callback extends Component {
   render() {
     const score = this.calculateScore(this.state.images);
     console.log("Score:", score)
-    setTimeout(() => {
-      this.getLevel(score)
-    }, 2000)
+    if (this.state.analyzed.length > 0) {
+      setTimeout(() => {
+        this.getLevel(score)
+      }, 2000)
+    }
 
     return (
       <div class="callback_page box">
