@@ -11,8 +11,8 @@ const analyzeImages = require('./utils');
 const port = process.env.PORT || 3000;
 let imageList;
 
-console.log(process.env.INSTAGRAM_CLIENT_ID)
-console.log(process.env.INSTAGRAM_REDIRECT_URI)
+console.log(process.env.INSTAGRAM_CLIENT_ID);
+console.log(process.env.INSTAGRAM_REDIRECT_URI);
 
 // try {
 //   Object.assign(process.env, require('../.env'));
@@ -38,7 +38,7 @@ app.post('/api/analyze', (req, res, next) => {
 app.get('/api/auth/instagram', (req, res, next) => {
   const url = `https://api.instagram.com/oauth/authorize/?client_id=${
     process.env.INSTAGRAM_CLIENT_ID
-    }&redirect_uri=${process.env.INSTAGRAM_REDIRECT_URI}&response_type=code`;
+  }&redirect_uri=${process.env.INSTAGRAM_REDIRECT_URI}&response_type=code`;
   res.redirect(url);
 });
 
