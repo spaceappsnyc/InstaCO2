@@ -32,15 +32,13 @@ export default class Callback extends Component {
     return total / images.length
   }
 
-
   render() {
+    const score = this.calculateScore(this.state.images);
+    let minion;
+    // if (score < 2) minion = 
     return (
       <div class="callback_page">
         <h1>Your Score: {this.calculateScore(this.state.images)}</h1>
-        {/* {this.state.images.length > 0 && (
-          <CircularProgress />
-        )} */}
-
       </div>
     );
   }
