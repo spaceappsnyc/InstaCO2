@@ -49,13 +49,13 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
         const token = JSON.parse(body)['access_token'];
         axios
           .get(
-            `https://api.instagram.com/v1/users/self/media/recent?access_token=${token}&max_id=5`
+            `https://api.instagram.com/v1/users/self/media/recent?access_token=${token}`
           )
           .then(resp => {
             const imagesUrlArray = resp.data['data'].map(
               img => img['images']['standard_resolution']['url']
             );
-            res.send(imagesUrlArray);
+            res.json(imagesUrlArray);
           })
           .catch(next);
       }
