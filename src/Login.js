@@ -35,7 +35,7 @@ export default class Login extends Component {
           this.state
         ) : (
             // <button onClick={this.onLogin}>Sign in to Instagram</button>
-            <a href="/api/auth/instagram" class="login_button">Sign in to Instagram</a>
+            <a href="/api/auth/instagram" class="login_button"></a>
           )}
       </div>
     );

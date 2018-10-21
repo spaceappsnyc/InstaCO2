@@ -7,23 +7,24 @@
 
 .login_page {
 	position: relative;
-	background-image: url('/img/login_page_bg.png');
+	width: 375px;
+	height: 667px;
+	background-image: url('http://localhost:3000/img/login_page_bg.png');
 }
 
 .login_button {
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
-    padding: 20px;
-    top: 200px;
+    width: 100px;
+    height: 34px;
+    top: 300px;
+    left: 140px;
     position: absolute;
-    text-align: center;
-    line-height: 3;
 	background-image: url('/img/login_button.png');
 }
 
 .callback_page {
 	position: relative;
-	background-image: url('/img/callback_page_bg.png');
+	width: 375px;
+	height: 667px;
+	background-image: url('/img/callback_page_bg.gif');
 }
 
