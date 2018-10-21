@@ -14,7 +14,8 @@ require('dotenv').config();
 
 process.env.INSTAGRAM_CLIENT_ID = '080eb63008dd41d0bcd80a1d6208d372';
 process.env.INSTAGRAM_CLIENT_SECRET = '1e770397bfce4aafbc8f5ef0563066b8';
-process.env.INSTAGRAM_REDIRECT_URI = 'http://localhost:3000/api/auth/instagram/callback';
+process.env.INSTAGRAM_REDIRECT_URI =
+  'http://localhost:3000/api/auth/instagram/callback';
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -26,7 +27,7 @@ app.use('/dist', express.static(path.join(__dirname, '../dist')));
 app.get('/api/auth/instagram', (req, res, next) => {
   const url = `https://api.instagram.com/oauth/authorize/?client_id=${
     process.env.INSTAGRAM_CLIENT_ID
-    }&redirect_uri=${process.env.INSTAGRAM_REDIRECT_URI}&response_type=code`;
+  }&redirect_uri=${process.env.INSTAGRAM_REDIRECT_URI}&response_type=code`;
   res.redirect(url);
 });
 
@@ -48,7 +49,18 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
 
     function callback(error, response, body) {
       if (!error && response.statusCode == 200) {
-        res.send(body);
+        const token = JSON.parse(body)['access_token'];
+        axios
+          .get(
+            `https://api.instagram.com/v1/users/self/media/recent?access_token=${token}&count=20`
+          )
+          .then(resp => {
+            const imagesUrlArray = resp.data['data'].map(
+              img => img['images']['standard_resolution']['url']
+            );
+            res.send(imagesUrlArray);
+          })
+          .catch(next);
       }
     }
     request(options, callback);
