@@ -7,7 +7,7 @@ const jwt = require('jwt-simple');
 const ejs = require('ejs');
 const axios = require('axios');
 const request = require('request');
-const utils = require('./utils');
+const analyzeImages = require('./utils');
 
 let imageList;
 try {
@@ -25,6 +25,11 @@ app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 app.get('/api/images', (req, res, next) => {
   res.json(imageList)
+})
+
+app.post('/api/analyze', (req, res, next) => {
+  analyzeImages(req.body.images)
+    .then(images => res.json(images))
 })
 
 app.get('/api/auth/instagram', (req, res, next) => {
