@@ -1,0 +1,22 @@
+body {
+	background-color: aqua;
+}
+
+.login_page {
+	width: 375px;
+	height: 667px;
+	position: relative;
+	background-image: url('/img/login_page_bg.png');
+}
+
+.login_button {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 20px;
+    top: 200px;
+    position: absolute;
+    text-align: center;
+    line-height: 3;
+	background-image: url('/img/login_button.png');
+}
