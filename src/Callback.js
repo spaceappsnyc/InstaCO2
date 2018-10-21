@@ -25,10 +25,11 @@ export default class Callback extends Component {
 
 
   calculateScore(images) {
-    return images.reduce((sum, image) => {
+    const total = images.reduce((sum, image) => {
       if (image.footPrint) sum += image.footPrint.value;
       return sum
     }, 0)
+    return total / images.length
   }
 
 
