@@ -8,6 +8,10 @@ const carbonData = require('./fakeCarbonData.json')
 
 const utils = {
   getScore: function (urlList) {
+    let totalScore = 0;
+
+
+
     return this.uploadImages(urlList)
       .then(response => utils.processConcepts(response))
       .catch(err => {
@@ -39,7 +43,7 @@ const utils = {
     return clarifaiResponse.outputs.reduce((sum, output) => {
       return sum + this.calculateFootPrint(output.data.concepts)
     }, 0)
-  }
+  },
 }
 
 const test = testImages.map(image => image.url);
