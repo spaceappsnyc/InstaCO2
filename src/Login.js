@@ -10,6 +10,7 @@ export default class Login extends Component {
   }
 
   onLogin(e) {
+
     axios
       .get('/api/auth/instagram')
       .then(resp => {
@@ -26,9 +27,9 @@ export default class Login extends Component {
           // <Analysis images={this.state.images} />
           this.state
         ) : (
-          // <button onClick={this.onLogin}>Sign in to Instagram</button>
-          <a href="/api/auth/instagram">Sign in to Instagram</a>
-        )}
+            // <button onClick={this.onLogin}>Sign in to Instagram</button>
+            <a href="/api/auth/instagram">Sign in to Instagram</a>
+          )}
       </div>
     );
   }

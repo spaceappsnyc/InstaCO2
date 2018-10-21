@@ -2,50 +2,36 @@ const Clarifai = require('clarifai');
 const clarifai = new Clarifai.App({
   apiKey: 'd3fc32cb4fbd4d20a8dc057208d6ce4f'
 })
-const carbonData = require('./fakeCarbonData.json')
+const carbonRegistery = require('./fakeCarbonData.json')
 
-const utils = {
-  getScore: function (urlList) {
-    let totalScore = 0;
-    while (urlList.length >= 32) {
-      this.uploadImages(urlList.splice(0, 32))
-        .then(response => totalScore += utils.processConcepts(response))
-        .catch(err => {
-          console.log(err);
-        })
+const mapCarbonDataToImageUrls = (response) => (
+  response.outputs.map(output => {
+    const image = {
+      url: output.input.data.image.url
     }
-    return this.uploadImages(urlList)
-      .then(response => (totalScore += utils.processConcepts(response)) / urlList.length)
-      .catch(err => {
-        console.log(err);
-      })
-  },
-  calculateFootPrint: function (conceptList) {
-    return conceptList.reduce((sum, concept) => {
-      if (carbonData[concept.name]) {
-        return sum + carbonData[concept.name].value;
-      } else {
-        return sum;
-      }
-    }, 0)
-  },
-  uploadImages: async function (urlList) {
-    const inputs = urlList.map(url => (
-      { url }
-    ));
-    try {
-      const generalModel = await clarifai.models.initModel({ id: Clarifai.GENERAL_MODEL, version: "aa7f35c01e0642fda5cf400f543e7c40" })
-      const response = await generalModel.predict(inputs)
-      return response;
-    } catch (ex) {
-      console.log(ex);
-    }
-  },
-  processConcepts: function (clarifaiResponse) {
-    return clarifaiResponse.outputs.reduce((sum, output) => {
-      return sum + this.calculateFootPrint(output.data.concepts)
-    }, 0)
-  },
+    output.data.concepts.forEach(concept => {
+      const footPrint = carbonRegistery[concept.name];
+      if (footPrint) image.footPrint = { name: concept.name, value: footPrint.value };
+    })
+    return image;
+  })
+)
+
+const uploadImages = async (imageInputs) => {
+  return clarifai.models.initModel({
+    id: Clarifai.GENERAL_MODEL,
+    version: "aa7f35c01e0642fda5cf400f543e7c40"
+  })
+    .then(generalModel => generalModel.predict(imageInputs))
+    .catch(err => console.log(err))
 }
 
-module.exports = utils;
+const formatImageUrls = (imageUrlArr) => imageUrlArr.map(url => ({ url }));
+
+const analyzeImages = (imageUrlArr) => (
+  uploadImages(formatImageUrls(imageUrlArr))
+    .then(response => mapCarbonDataToImageUrls(response))
+    .catch(err => console.log(err))
+)
+
+module.exports = analyzeImages;

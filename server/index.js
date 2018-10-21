@@ -9,7 +9,6 @@ const axios = require('axios');
 const request = require('request');
 const utils = require('./utils');
 
-//set environment variables from .env
 
 try {
   Object.assign(process.env, require('../.env'));
@@ -25,7 +24,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 app.get('/api/auth/instagram', (req, res, next) => {
-  console.log(process.env.INSTAGRAM_CLIENT_ID)
+  console.log(req);
   const url = `https://api.instagram.com/oauth/authorize/?client_id=${
     process.env.INSTAGRAM_CLIENT_ID
     }&redirect_uri=${process.env.INSTAGRAM_REDIRECT_URI}&response_type=code`;
@@ -61,8 +60,6 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
             const imagesUrlArray = resp.data['data'].map(
               img => img['images']['standard_resolution']['url']
             );
-            utils.getScore(imagesUrlArray)
-              .then(score => console.log(score))
             res.json(imagesUrlArray);
           })
           .catch(next);
