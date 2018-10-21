@@ -42,7 +42,6 @@ export default class Callback extends Component {
     else if (score < 15) level = 'level_0';
     $('#level').addClass(level);
   }
-
   render() {
     const score = this.calculateScore(this.state.analyzed);
     console.log("Score:", score)

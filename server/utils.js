@@ -1,9 +1,4 @@
 const Clarifai = require('clarifai');
-try {
-  Object.assign(process.env, require('../.env'));
-} catch (ex) {
-  console.log(ex);
-}
 const clarifai = new Clarifai.App({
   apiKey: process.env.CLARIFAI_KEY
 })
