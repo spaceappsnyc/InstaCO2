@@ -6,7 +6,13 @@ export default class Login extends Component {
   constructor() {
     super();
     this.state = { images: [] };
-    this.onLogin = this.onLogin.bind(this);
+    this.onLogin = this.onLogin.bind(this)
+  }
+
+  componentDidMount() {
+    axios.get('/api/images')
+      .then(response => response.data)
+      .then(images => console.log(images))
   }
 
   onLogin(e) {
@@ -21,6 +27,7 @@ export default class Login extends Component {
   }
 
   render() {
+
     return (
       <div class="login_page">
         {this.state.length ? (

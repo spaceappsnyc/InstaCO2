@@ -9,6 +9,7 @@ const axios = require('axios');
 const request = require('request');
 const utils = require('./utils');
 
+let imageList;
 try {
   Object.assign(process.env, require('../.env'));
 } catch (ex) {
@@ -21,6 +22,10 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
+
+app.get('/api/images', (req, res, next) => {
+  res.json(imageList)
+})
 
 app.get('/api/auth/instagram', (req, res, next) => {
   console.log(req);
@@ -59,7 +64,9 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
             const imagesUrlArray = resp.data['data'].map(
               img => img['images']['standard_resolution']['url']
             );
-            res.json(imagesUrlArray);
+            const index = path.join(__dirname, '../public/index.ejs');
+            imageList = imagesUrlArray
+            res.render(index);
           })
           .catch(next);
       }
@@ -70,9 +77,9 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
   }
 });
 
-const index = path.join(__dirname, '../public/index.html');
+const index = path.join(__dirname, '../public/index.ejs');
 app.get('/', async (req, res) => {
-  res.render(index, { token: req.query.token });
+  res.render(index, { images: 'holder' });
 });
 
 app.listen(3000, () => {

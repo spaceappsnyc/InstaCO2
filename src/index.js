@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { HashRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { render } from 'react-dom';
 import Login from './Login';
+import Callback from './Callback';
 
 class App extends Component {
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <div>
-          <Route exact to="/" component={Login} />
+          <Route exact path="/" component={Login} />
+          <Route path="/api/auth/instagram/callback" component={Callback} />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }
