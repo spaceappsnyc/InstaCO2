@@ -29,7 +29,7 @@ app.get('/api/images', (req, res, next) => {
 app.post('/api/analyze', (req, res, next) => {
   analyzeImages(req.body.images)
     .then(images => res.json(images))
-    .catch(next);
+    .catch(next)
 });
 
 app.get('/api/auth/instagram', (req, res, next) => {
@@ -96,7 +96,8 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
       }
     }
     request(options, callback);
-  } catch (ex) {
+  }
+  catch (ex) {
     next(ex);
   }
 });
