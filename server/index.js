@@ -30,7 +30,9 @@ app.get('/api/images', (req, res, next) => {
 });
 
 app.post('/api/analyze', (req, res, next) => {
-  analyzeImages(req.body.images).then(images => res.json);
+  analyzeImages(req.body.images)
+    .then(images => res.json(images))
+    .catch(next)
 });
 
 app.get('/api/auth/instagram', (req, res, next) => {
@@ -40,7 +42,7 @@ app.get('/api/auth/instagram', (req, res, next) => {
   res.redirect(url);
 });
 
-app.get('/api/auth/instagram/callback/', async(req, res, next) => {
+app.get('/api/auth/instagram/callback/', async (req, res, next) => {
   try {
     const tokenReq = {
       client_id: process.env.INSTAGRAM_CLIENT_ID,
@@ -82,7 +84,7 @@ app.get('/api/auth/instagram/callback/', async(req, res, next) => {
 });
 
 const index = path.join(__dirname, '../public/index.ejs');
-app.get('/', async(req, res) => {
+app.get('/', async (req, res) => {
   res.render(index, { images: 'holder' });
 });
 
