@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import Analysis from './Analysis';
 import axios from 'axios';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 export default class Callback extends Component {
   constructor() {
     super();
     this.state = { images: [], analyzed: [] };
-  }
+  };
 
   componentDidMount() {
     axios
@@ -21,7 +23,7 @@ export default class Callback extends Component {
           .then(analyzed => this.setState({ analyzed }))
           .catch(err => console.log(err))
       })
-  }
+  };
 
   calculateScore(images) {
     console.log('Images', images);
@@ -31,7 +33,7 @@ export default class Callback extends Component {
     }, 0);
     console.log('Total', total);
     return total / images.length;
-  }
+  };
 
   getLevel(score) {
     let level = '';
@@ -41,20 +43,22 @@ export default class Callback extends Component {
     else if (score < 10) level = 'level_1';
     else if (score < 15) level = 'level_0';
     $('#level').addClass(level);
-  }
+  };
+
   render() {
     const score = this.calculateScore(this.state.analyzed);
     console.log("Score:", score)
     if (this.state.analyzed.length > 0) {
       setTimeout(() => {
         this.getLevel(score)
-      }, 2000)
+      }, 1000)
     }
 
     return (
       <div class="callback_page box">
         {/* <h1>Your Score: {this.calculateScore(this.state.images)}</h1> */}
         <div id="level" class="" />
+        <Button to="/" component={Link}>Back</Button>
       </div>
     );
   }
