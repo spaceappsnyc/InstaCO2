@@ -1,7 +1,4 @@
-process.env.INSTAGRAM_CLIENT_ID = '080eb63008dd41d0bcd80a1d6208d372';
-process.env.INSTAGRAM_REDIRECT_URI = 'localhost:3000/api/auth/instagram/callback'
-process.env.INSTAGRAM_SECRET = '1e770397bfce4aafbc8f5ef0563066b8'
-process.env.CLARIFAI_KEY = 'd3fc32cb4fbd4d20a8dc057208d6ce4f';
+require('dotenv').config();
 
 const express = require('express');
 const app = express();
@@ -14,14 +11,9 @@ const axios = require('axios');
 const request = require('request');
 const analyzeImages = require('./utils');
 const port = process.env.PORT || 3000;
+
+//TODO: think of a better way to do this ha
 let imageList;
-
-
-// try {
-//   Object.assign(process.env, require('../.env'));
-// } catch (ex) {
-//   console.log(ex);
-// }
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -35,7 +27,9 @@ app.get('/api/images', (req, res, next) => {
 });
 
 app.post('/api/analyze', (req, res, next) => {
-  analyzeImages(req.body.images).then(images => res.json);
+  analyzeImages(req.body.images)
+    .then(images => res.json(images))
+    .catch(next);
 });
 
 app.get('/api/auth/instagram', (req, res, next) => {
@@ -46,6 +40,7 @@ app.get('/api/auth/instagram', (req, res, next) => {
 });
 
 app.get('/api/auth/instagram/callback/', async (req, res, next) => {
+  console.log('HIT')
   try {
     const tokenReq = {
       client_id: process.env.INSTAGRAM_CLIENT_ID,
@@ -77,6 +72,9 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
             res.render(index);
           })
           .catch(next);
+      }
+      else {
+        console.log(error, response.statusCode)
       }
     }
     request(options, callback);
