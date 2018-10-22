@@ -40,8 +40,22 @@ app.get('/api/auth/instagram', (req, res, next) => {
 });
 
 app.get('/api/auth/instagram/callback/', async (req, res, next) => {
-  console.log('HIT')
+  // const tokenReq = {
+  //   client_id: process.env.INSTAGRAM_CLIENT_ID,
+  //   client_secret: process.env.INSTAGRAM_CLIENT_SECRET,
+  //   grant_type: 'authorization_code',
+  //   redirect_uri: process.env.INSTAGRAM_REDIRECT_URI,
+  //   code: req.query.code,
+  // };
+
+  // axios.post('https://api.instagram.com/oauth/access_token', tokenReq)
+  //   .then(response => response.data)
+  //   .then(data => .log("DATA", data))
+  //   .catch(next)
   try {
+    console.log('secret', process.env.INSTAGRAM_CLIENT_SECRET)
+    console.log('id', process.env.INSTAGRAM_CLIENT_ID)
+    console.log('uri', process.env.INSTAGRAM_REDIRECT_URI)
     const tokenReq = {
       client_id: process.env.INSTAGRAM_CLIENT_ID,
       client_secret: process.env.INSTAGRAM_CLIENT_SECRET,
@@ -74,7 +88,11 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
           .catch(next);
       }
       else {
-        console.log(error, response.statusCode)
+        console.log('whoops there was an error!')
+        console.log(body)
+        // console.log(response.statusCode)
+
+        next(error)
       }
     }
     request(options, callback);
