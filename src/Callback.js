@@ -5,7 +5,6 @@ import axios from 'axios';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import Radar from 'react-d3-radar/lib/Radar';
 
 export default class Callback extends Component {
   constructor() {

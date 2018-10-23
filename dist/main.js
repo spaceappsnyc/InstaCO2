@@ -101807,10 +101807,6 @@ var _core = __webpack_require__(/*! @material-ui/core */ "./node_modules/@materi
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
-var _Radar = __webpack_require__(/*! react-d3-radar/lib/Radar */ "./node_modules/react-d3-radar/lib/Radar.js");
-
-var _Radar2 = _interopRequireDefault(_Radar);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -102073,7 +102069,9 @@ var RadarChart = function (_Component) {
       }, {});
     }, _this.render = function () {
       var carbonValues = _this.gatherCarbonValues(_this.props.analyzedImages);
-      var maxValue = Object.values(carbonValues).sort().reverse()[0];
+      var maxValue = Object.values(carbonValues).reduce(function (a, b) {
+        return a > b ? a : b;
+      });
       var formattedVariables = Object.keys(carbonValues).map(function (name) {
         return {
           key: name,

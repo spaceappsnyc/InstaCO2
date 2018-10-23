@@ -16,7 +16,7 @@ export default class RadarChart extends Component {
   }
   render = () => {
     const carbonValues = this.gatherCarbonValues(this.props.analyzedImages);
-    const maxValue = Object.values(carbonValues).sort().reverse()[0]
+    const maxValue = Object.values(carbonValues).reduce((a, b) => a > b ? a : b);
     const formattedVariables = Object.keys(carbonValues)
       .map(name => ({
         key: name,
