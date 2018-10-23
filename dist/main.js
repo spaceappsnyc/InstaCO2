@@ -101893,7 +101893,7 @@ var Callback = function (_Component) {
           { id: 'level', 'class': '' },
           finishedAnalyzing && _react2.default.createElement(
             'div',
-            { style: { paddingTop: '180px' } },
+            { style: { paddingTop: '180px', backgroundColor: 'rgb(173, 239, 246)' } },
             _react2.default.createElement(_RadarChart2.default, {
               analyzedImages: this.state.analyzed
             })
@@ -101985,7 +101985,6 @@ var Login = function (_Component) {
 
       _axios2.default.get('/api/auth/instagram').then(function (resp) {
         _this2.setState({ images: resp.data });
-        console.log(resp.data);
       }).catch(console.error.bind(console));
     }
   }, {

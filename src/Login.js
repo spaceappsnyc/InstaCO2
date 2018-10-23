@@ -21,7 +21,6 @@ export default class Login extends Component {
       .get('/api/auth/instagram')
       .then(resp => {
         this.setState({ images: resp.data });
-        console.log(resp.data);
       })
       .catch(console.error.bind(console));
   }

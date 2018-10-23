@@ -29,7 +29,6 @@ app.get('/api/images', (req, res, next) => {
 app.post('/api/analyze', (req, res, next) => {
   analyzeImages(req.body.images)
     .then(images => {
-      console.log(images)
       res.json(images)
     })
     .catch(next)
@@ -44,9 +43,6 @@ app.get('/api/auth/instagram', (req, res, next) => {
 
 app.get('/api/auth/instagram/callback/', async (req, res, next) => {
   try {
-    console.log('secret', process.env.INSTAGRAM_CLIENT_SECRET)
-    console.log('id', process.env.INSTAGRAM_CLIENT_ID)
-    console.log('uri', process.env.INSTAGRAM_REDIRECT_URI)
     const tokenReq = {
       client_id: process.env.INSTAGRAM_CLIENT_ID,
       client_secret: process.env.INSTAGRAM_CLIENT_SECRET,
@@ -80,9 +76,6 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
       }
       else {
         console.log('whoops there was an error!')
-        console.log(body)
-        // console.log(response.statusCode)
-
         next(error)
       }
     }

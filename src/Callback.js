@@ -66,7 +66,7 @@ export default class Callback extends Component {
         {/* <h1>Your Score: {this.calculateScore(this.state.images)}</h1> */}
         <div id="level" class="">
           {finishedAnalyzing && (
-            <div style={{ paddingTop: '180px' }}>
+            <div style={{ paddingTop: '180px', backgroundColor: 'rgb(173, 239, 246)' }} >
               <RadarChart
                 analyzedImages={this.state.analyzed}
               />
