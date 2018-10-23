@@ -41,22 +41,28 @@
   "milk": {
     "value": 2
   },
-  "bicycle": {
-    "value": -10
-  },
   "car": {
     "value": 25
   },
   "airplane": {
     "value": 90
   },
-  "train": {
-    "value": -20
-  },
-  "bus": {
-    "value": -20
-  },
   "salad": {
     "value": 1
+  },
+  "baby": {
+    "value": 90
+  },
+  "child": {
+    "value": 90
+  },
+  "train": {
+    "value": 0
+  },
+  "bus": {
+    "value": 0
+  },
+  "bicycle": {
+    "value": 0
   }
 }

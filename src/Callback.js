@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Analysis from './Analysis';
+import RadarChart from './RadarChart';
 import axios from 'axios';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import Radar from 'react-d3-radar/lib/Radar';
 
 export default class Callback extends Component {
   constructor() {
@@ -26,12 +28,10 @@ export default class Callback extends Component {
   };
 
   calculateScore(images) {
-    console.log('Images', images);
     const total = images.reduce((sum, image) => {
       if (image.footPrint) sum += image.footPrint.value;
       return sum;
     }, 0);
-    console.log('Total', total);
     return total / images.length;
   };
 
@@ -41,25 +41,47 @@ export default class Callback extends Component {
     else if (score < 5) level = 'level_3';
     else if (score < 7) level = 'level_2';
     else if (score < 10) level = 'level_1';
-    else if (score < 15) level = 'level_0';
+    else level = 'level_0';
     $('#level').addClass(level);
   };
 
   render() {
     const score = this.calculateScore(this.state.analyzed);
-    console.log("Score:", score)
-    if (this.state.analyzed.length > 0) {
+    const finishedAnalyzing = this.state.analyzed.length > 0;
+    if (finishedAnalyzing) {
+      this.getLevel(score)
       setTimeout(() => {
         this.getLevel(score)
-      }, 1000)
+      }, 2000)
+    }
+    const btnStyles = {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      margin: '20px'
     }
 
     return (
       <div class="callback_page box">
         {/* <h1>Your Score: {this.calculateScore(this.state.images)}</h1> */}
-        <div id="level" class="" />
-        <Button to="/" component={Link}>Back</Button>
-      </div>
+        <div id="level" class="">
+          {finishedAnalyzing && (
+            <div style={{ paddingTop: '180px' }}>
+              <RadarChart
+                analyzedImages={this.state.analyzed}
+              />
+            </div>
+          )}
+          <Button
+            variant="contained"
+            style={btnStyles}
+            to="/"
+            component={Link}
+          >
+            Back
+          </Button>
+        </div>
+      </div >
     );
   }
 }
