@@ -101882,7 +101882,9 @@ var Callback = function (_Component) {
         position: 'absolute',
         top: 0,
         left: 0,
-        margin: '20px'
+        margin: '20px',
+        backgroundColor: 'rgb(81,98,206)',
+        color: 'rgb(223,225,245)'
       };
 
       return _react2.default.createElement(
@@ -101949,6 +101951,8 @@ var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _core = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/index.es.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -101993,16 +101997,20 @@ var Login = function (_Component) {
     value: function render() {
 
       return _react2.default.createElement(
-        'div',
-        { 'class': 'login_page box' },
-        this.state.length ?
-        // <Analysis images={this.state.images} />
-        this.state :
-        // <button onClick={this.onLogin}>Sign in to Instagram</button>
+        _core.Grid,
+        { item: true },
         _react2.default.createElement(
-          'a',
-          { href: '/api/auth/instagram', 'class': 'login_button' },
-          '\xA0'
+          'div',
+          { 'class': 'login_page box' },
+          this.state.length ?
+          // <Analysis images={this.state.images} />
+          this.state :
+          // <button onClick={this.onLogin}>Sign in to Instagram</button>
+          _react2.default.createElement(
+            'a',
+            { href: '/api/auth/instagram', 'class': 'login_button' },
+            '\xA0'
+          )
         )
       );
     }
@@ -102227,6 +102235,8 @@ var _Callback = __webpack_require__(/*! ./Callback */ "./src/Callback.js");
 
 var _Callback2 = _interopRequireDefault(_Callback);
 
+var _core = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/index.es.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -102252,9 +102262,13 @@ var App = function (_Component) {
         null,
         _react2.default.createElement(
           'div',
-          null,
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Login2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/api/auth/instagram/callback', component: _Callback2.default })
+          { className: 'main-container' },
+          _react2.default.createElement(
+            _core.Grid,
+            { container: true, justify: 'center' },
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Login2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/api/auth/instagram/callback', component: _Callback2.default })
+          )
         )
       );
     }

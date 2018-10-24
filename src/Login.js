@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Analysis from './Analysis';
 import axios from 'axios';
+import { Grid, CircularProgress } from '@material-ui/core';
+
 
 export default class Login extends Component {
   constructor() {
@@ -28,15 +30,17 @@ export default class Login extends Component {
   render() {
 
     return (
-      <div class="login_page box">
-        {this.state.length ? (
-          // <Analysis images={this.state.images} />
-          this.state
-        ) : (
-            // <button onClick={this.onLogin}>Sign in to Instagram</button>
-            <a href="/api/auth/instagram" class="login_button">&nbsp;</a>
-          )}
-      </div>
+      <Grid item>
+        <div class="login_page box">
+          {this.state.length ? (
+            // <Analysis images={this.state.images} />
+            this.state
+          ) : (
+              // <button onClick={this.onLogin}>Sign in to Instagram</button>
+              <a href="/api/auth/instagram" class="login_button">&nbsp;</a>
+            )}
+        </div>
+      </Grid>
     );
   }
 }
