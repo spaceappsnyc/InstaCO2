@@ -101882,7 +101882,9 @@ var Callback = function (_Component) {
         position: 'absolute',
         top: 0,
         left: 0,
-        margin: '20px'
+        margin: '20px',
+        backgroundColor: 'rgb(81,98,206)',
+        color: 'rgb(223,225,245)'
       };
 
       return _react2.default.createElement(

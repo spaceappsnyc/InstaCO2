@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Analysis from './Analysis';
 import axios from 'axios';
-import { Grid } from '@material-ui/core';
+import { Grid, CircularProgress } from '@material-ui/core';
 
 
 export default class Login extends Component {
