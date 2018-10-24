@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Analysis from './Analysis';
+import Score from './Score';
 import RadarChart from './RadarChart';
 import axios from 'axios';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -66,6 +67,7 @@ export default class Callback extends Component {
         <div id="level" class="">
           {finishedAnalyzing && (
             <div style={{ paddingTop: '180px', backgroundColor: 'rgb(173, 239, 246)' }} >
+              <Score score={score} />
               <RadarChart
                 analyzedImages={this.state.analyzed}
               />
