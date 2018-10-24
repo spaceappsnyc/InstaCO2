@@ -8,12 +8,19 @@
 	height: 667px;
 }
 
+.main-container {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgb(154,241,248);
+}
+
 .login_page {
 	position: relative;
 	background-image: url('/img/login_page_bg.png');
 }
 
 .login_button {
+		border-radius: 5px;
     width: 100px;
     height: 34px;
     top: 300px;
