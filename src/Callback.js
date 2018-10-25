@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Analysis from './Analysis';
 import Score from './Score';
 import RadarChart from './RadarChart';
 import axios from 'axios';
@@ -62,9 +61,9 @@ export default class Callback extends Component {
     }
 
     return (
-      <div class="callback_page box">
+      <div className="callback_page box">
         {/* <h1>Your Score: {this.calculateScore(this.state.images)}</h1> */}
-        <div id="level" class="">
+        <div id="level" className="">
           {finishedAnalyzing && (
             <div style={{ paddingTop: '180px', backgroundColor: 'rgb(173, 239, 246)' }} >
               <Score score={score} />
