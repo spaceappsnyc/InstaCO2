@@ -101761,6 +101761,8 @@ var Callback = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Callback.__proto__ || Object.getPrototypeOf(Callback)).call(this));
 
     _this.state = { images: [], analyzed: [] };
+    _this.calculateScore = _this.calculateScore.bind(_this);
+    _this.getLevel = _this.getLevel.bind(_this);
     return _this;
   }
 
@@ -101777,19 +101779,25 @@ var Callback = function (_Component) {
           return response.data;
         }).then(function (analyzed) {
           return _this2.setState({ analyzed: analyzed });
+        }).then(function () {
+          return console.log(_this2.state);
         }).catch(function (err) {
           return console.log(err);
         });
-      });
+      }).catch(console.error.bind(console));
     }
   }, {
     key: 'calculateScore',
     value: function calculateScore(images) {
-      var total = images.reduce(function (sum, image) {
-        if (image.footPrint) sum += image.footPrint.value;
-        return sum;
-      }, 0);
-      return total / images.length;
+      if (!images.length) {
+        return;
+      } else {
+        var total = images.reduce(function (sum, image) {
+          if (image.footPrint) sum += image.footPrint.value;
+          return sum;
+        }, 0);
+        return total / images.length;
+      }
     }
   }, {
     key: 'getLevel',
@@ -101826,20 +101834,18 @@ var Callback = function (_Component) {
           { id: 'level', className: '' },
           finishedAnalyzing && _react2.default.createElement(
             'div',
-            { style: { paddingTop: '180px', backgroundColor: 'rgb(173, 239, 246)' } },
+            {
+              style: {
+                paddingTop: '180px',
+                backgroundColor: 'rgb(173, 239, 246)'
+              }
+            },
             _react2.default.createElement(_Score2.default, { score: score }),
-            _react2.default.createElement(_RadarChart2.default, {
-              analyzedImages: this.state.analyzed
-            })
+            _react2.default.createElement(_RadarChart2.default, { analyzedImages: this.state.analyzed })
           ),
           _react2.default.createElement(
             _core.Button,
-            {
-              variant: 'contained',
-              style: btnStyles,
-              to: '/',
-              component: _reactRouterDom.Link
-            },
+            { variant: 'contained', style: btnStyles, to: '/', component: _reactRouterDom.Link },
             'Back'
           )
         )
@@ -101897,7 +101903,7 @@ var Login = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this));
 
     _this.state = { images: [] };
-    _this.onLogin = _this.onLogin.bind(_this);
+    // this.onLogin = this.onLogin.bind(this)
     return _this;
   }
 
@@ -101906,23 +101912,24 @@ var Login = function (_Component) {
     value: function componentDidMount() {
       _axios2.default.get('/api/images').then(function (response) {
         return response.data;
-      }).then(function (images) {
-        return console.log(images);
-      });
+      })
+      // .then(images => console.log(images))
+      .catch(console.error.bind(console));
     }
-  }, {
-    key: 'onLogin',
-    value: function onLogin(e) {
-      var _this2 = this;
 
-      _axios2.default.get('/api/auth/instagram').then(function (resp) {
-        _this2.setState({ images: resp.data });
-      }).catch(console.error.bind(console));
-    }
+    // onLogin(e) {
+
+    //   axios
+    //     .get('/api/auth/instagram')
+    //     .then(resp => {
+    //       this.setState({ images: resp.data });
+    //     })
+    //     .catch(console.error.bind(console));
+    // }
+
   }, {
     key: 'render',
     value: function render() {
-
       return _react2.default.createElement(
         _core.Grid,
         { item: true },

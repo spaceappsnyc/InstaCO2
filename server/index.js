@@ -29,15 +29,15 @@ app.get('/api/images', (req, res, next) => {
 app.post('/api/analyze', (req, res, next) => {
   analyzeImages(req.body.images)
     .then(images => {
-      res.json(images)
+      res.json(images);
     })
-    .catch(next)
+    .catch(next);
 });
 
 app.get('/api/auth/instagram', (req, res, next) => {
   const url = `https://api.instagram.com/oauth/authorize/?client_id=${
     process.env.INSTAGRAM_CLIENT_ID
-    }&redirect_uri=${process.env.INSTAGRAM_REDIRECT_URI}&response_type=code`;
+  }&redirect_uri=${process.env.INSTAGRAM_REDIRECT_URI}&response_type=code`;
   res.redirect(url);
 });
 
@@ -73,15 +73,13 @@ app.get('/api/auth/instagram/callback/', async (req, res, next) => {
             res.render(index);
           })
           .catch(next);
-      }
-      else {
-        console.log('whoops there was an error!')
-        next(error)
+      } else {
+        console.log('whoops there was an error!');
+        next(error);
       }
     }
     request(options, callback);
-  }
-  catch (ex) {
+  } catch (ex) {
     next(ex);
   }
 });

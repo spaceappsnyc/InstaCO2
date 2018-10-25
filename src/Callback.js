@@ -10,7 +10,9 @@ export default class Callback extends Component {
   constructor() {
     super();
     this.state = { images: [], analyzed: [] };
-  };
+    this.calculateScore = this.calculateScore.bind(this);
+    this.getLevel = this.getLevel.bind(this);
+  }
 
   componentDidMount() {
     axios
@@ -22,17 +24,23 @@ export default class Callback extends Component {
           .post('/api/analyze', { images })
           .then(response => response.data)
           .then(analyzed => this.setState({ analyzed }))
-          .catch(err => console.log(err))
+          .then(() => console.log(this.state))
+          .catch(err => console.log(err));
       })
-  };
+      .catch(console.error.bind(console));
+  }
 
   calculateScore(images) {
-    const total = images.reduce((sum, image) => {
-      if (image.footPrint) sum += image.footPrint.value;
-      return sum;
-    }, 0);
-    return total / images.length;
-  };
+    if (!images.length) {
+      return;
+    } else {
+      const total = images.reduce((sum, image) => {
+        if (image.footPrint) sum += image.footPrint.value;
+        return sum;
+      }, 0);
+      return total / images.length;
+    }
+  }
 
   getLevel(score) {
     let level = '';
@@ -42,46 +50,44 @@ export default class Callback extends Component {
     else if (score < 10) level = 'level_1';
     else level = 'level_0';
     $('#level').addClass(level);
-  };
+  }
 
   render() {
     const score = this.calculateScore(this.state.analyzed);
     const finishedAnalyzing = this.state.analyzed.length > 0;
     if (finishedAnalyzing) {
-      this.getLevel(score)
+      this.getLevel(score);
       setTimeout(() => {
-        this.getLevel(score)
-      }, 2000)
+        this.getLevel(score);
+      }, 2000);
     }
     const btnStyles = {
       position: 'absolute',
       top: 0,
       left: 0,
-      margin: '20px'
-    }
+      margin: '20px',
+    };
 
     return (
       <div className="callback_page box">
         {/* <h1>Your Score: {this.calculateScore(this.state.images)}</h1> */}
         <div id="level" className="">
           {finishedAnalyzing && (
-            <div style={{ paddingTop: '180px', backgroundColor: 'rgb(173, 239, 246)' }} >
+            <div
+              style={{
+                paddingTop: '180px',
+                backgroundColor: 'rgb(173, 239, 246)',
+              }}
+            >
               <Score score={score} />
-              <RadarChart
-                analyzedImages={this.state.analyzed}
-              />
+              <RadarChart analyzedImages={this.state.analyzed} />
             </div>
           )}
-          <Button
-            variant="contained"
-            style={btnStyles}
-            to="/"
-            component={Link}
-          >
+          <Button variant="contained" style={btnStyles} to="/" component={Link}>
             Back
           </Button>
         </div>
-      </div >
+      </div>
     );
   }
 }
