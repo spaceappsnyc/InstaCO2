@@ -31,13 +31,7 @@ export default class Login extends Component {
     return (
       <Grid item>
         <div className="login_page box">
-          {this.state.length ? (
-            // <Analysis images={this.state.images} />
-            this.state
-          ) : (
-              // <button onClick={this.onLogin}>Sign in to Instagram</button>
-              <a href="/api/auth/instagram" className="login_button">&nbsp;</a>
-            )}
+          <a href="/api/auth/instagram" className="login_button"></a>
         </div>
       </Grid>
     );

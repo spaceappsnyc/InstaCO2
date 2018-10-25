@@ -101929,15 +101929,7 @@ var Login = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: 'login_page box' },
-          this.state.length ?
-          // <Analysis images={this.state.images} />
-          this.state :
-          // <button onClick={this.onLogin}>Sign in to Instagram</button>
-          _react2.default.createElement(
-            'a',
-            { href: '/api/auth/instagram', className: 'login_button' },
-            '\xA0'
-          )
+          _react2.default.createElement('a', { href: '/api/auth/instagram', className: 'login_button' })
         )
       );
     }
