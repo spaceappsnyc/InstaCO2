@@ -23,15 +23,15 @@ We are incredibly excited to present InstaCO2 to you. We strongly believe that r
 # TODO
 ## Results page:
 
-* clean up radar chart
-* carbon numbers indicative ... counting number up to
-* static, what next page
+* clean up radar chart (Jordane)
+* carbon numbers indicative ... counting number up to (Sam)
+* static, what next page (?)
 
 ## styling:
 
-* responsive design
-* title icon / brand icon
-* avatar on results page
+* responsive design (?)
+* title icon / brand icon (Jordane)
+* avatar on results page (Jordane - need to talk)
 
 ## video:
 
@@ -41,5 +41,5 @@ We are incredibly excited to present InstaCO2 to you. We strongly believe that r
 * list of 'scene' / video shots to splice
 
 1. Demonstrate the information gap
-2. Motivation to conenct with more people, small impact
+2. Motivation to connect with more people, small impact
 3. Low effort, real change
