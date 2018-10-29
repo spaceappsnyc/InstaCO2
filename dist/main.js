@@ -774,7 +774,7 @@ var styles = function styles(theme) {
       width: '100%',
       height: '100%',
       textAlign: 'center',
-      // Handle non-square image. The property isn't supported by IE11.
+      // Handle non-square image. The property isn't supported by IE 11.
       objectFit: 'cover'
     }
   };
@@ -2196,7 +2196,7 @@ var styles = {
 
 exports.styles = styles;
 
-if ("development" !== 'production' && !_react.default.createContext) {
+if (true && !_react.default.createContext) {
   throw new Error('Material-UI: react@16.3.0 or greater is required.');
 }
 /**
@@ -5331,7 +5331,7 @@ function (_React$Component) {
       // Ignore events that have been `event.preventDefault()` marked.
       if (event.defaultPrevented) {
         return;
-      } // IE11 support, which trigger the handleClickAway even after the unbind
+      } // IE 11 support, which trigger the handleClickAway even after the unbind
 
 
       if (!_this.mounted) {
@@ -6015,7 +6015,7 @@ var styles = function styles(theme) {
       margin: 48,
       position: 'relative',
       overflowY: 'auto',
-      // Fix IE11 issue, to remove at some point.
+      // Fix IE 11 issue, to remove at some point.
       // We disable the focus ring for mouse, touch and keyboard users.
       outline: 'none'
     },
@@ -8357,13 +8357,13 @@ var styles = function styles(theme) {
       }
     },
 
-    /* Styles applied to the root element. */
+    /* Styles applied to the root element if `disableUnderline={false}`. */
     underline: {
       '&:after': {
         borderBottom: "2px solid ".concat(theme.palette.primary[light ? 'dark' : 'light']),
         left: 0,
         bottom: 0,
-        // Doing the other way around crash on IE11 "''" https://github.com/cssinjs/jss/issues/242
+        // Doing the other way around crash on IE 11 "''" https://github.com/cssinjs/jss/issues/242
         content: '""',
         position: 'absolute',
         right: 0,
@@ -8387,7 +8387,7 @@ var styles = function styles(theme) {
         borderBottom: "1px solid ".concat(bottomLineColor),
         left: 0,
         bottom: 0,
-        // Doing the other way around crash on IE11 "''" https://github.com/cssinjs/jss/issues/242
+        // Doing the other way around crash on IE 11 "''" https://github.com/cssinjs/jss/issues/242
         content: '"\\00a0"',
         position: 'absolute',
         right: 0,
@@ -8709,7 +8709,9 @@ var styles = {
     padding: 0,
     margin: 0,
     border: 0,
-    verticalAlign: 'top' // Fix alignment issue on Safari.
+    verticalAlign: 'top',
+    // Fix alignment issue on Safari.
+    zIndex: 0 // Reset the stacking context for the label z-index.
 
   },
 
@@ -9364,11 +9366,11 @@ var styles = function styles(theme) {
       lineHeight: '1em',
       minHeight: '1em',
       margin: 0,
-      '&$error': {
-        color: theme.palette.error.main
-      },
       '&$disabled': {
         color: theme.palette.text.disabled
+      },
+      '&$error': {
+        color: theme.palette.error.main
       }
     },
 
@@ -10384,7 +10386,7 @@ var styles = {
     overflow: 'hidden'
   },
 
-  /* Styles applied to an `ing` element child, if if needed to ensure it covers the tile. */
+  /* Styles applied to an `img` element child, if needed to ensure it covers the tile. */
   imgFullHeight: {
     height: '100%',
     transform: 'translateX(-50%)',
@@ -10392,7 +10394,7 @@ var styles = {
     left: '50%'
   },
 
-  /* Styles applied to an `ing` element child, if if needed to ensure it covers the tile. */
+  /* Styles applied to an `img` element child, if needed to ensure it covers the tile. */
   imgFullWidth: {
     width: '100%',
     position: 'relative',
@@ -10689,7 +10691,7 @@ var styles = function styles(theme) {
     /* Styles applied to the actionIcon if supplied. */
     actionIcon: {},
 
-    /* Styles applied to the actionIcon if `actionPosition="left". */
+    /* Styles applied to the actionIcon if `actionPosition="left"`. */
     actionIconActionPosLeft: {
       order: -1
     }
@@ -11397,7 +11399,9 @@ HiddenCss.propTypes =  true ? {
   xsUp: _propTypes.default.bool
 } : undefined;
 
-var _default = (0, _withStyles.default)(styles)(HiddenCss);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiHiddenCss'
+})(HiddenCss);
 
 exports.default = _default;
 
@@ -11828,7 +11832,7 @@ var styles = function styles(theme) {
       padding: 12,
       borderRadius: '50%',
       overflow: 'visible',
-      // Explicitly set the default value to solve a bug on IE11.
+      // Explicitly set the default value to solve a bug on IE 11.
       color: theme.palette.action.active,
       transition: theme.transitions.create('background-color', {
         duration: theme.transitions.duration.shortest
@@ -12049,7 +12053,7 @@ var styles = function styles(theme) {
         borderBottom: "2px solid ".concat(theme.palette.primary[light ? 'dark' : 'light']),
         left: 0,
         bottom: 0,
-        // Doing the other way around crash on IE11 "''" https://github.com/cssinjs/jss/issues/242
+        // Doing the other way around crash on IE 11 "''" https://github.com/cssinjs/jss/issues/242
         content: '""',
         position: 'absolute',
         right: 0,
@@ -12073,7 +12077,7 @@ var styles = function styles(theme) {
         borderBottom: "1px solid ".concat(bottomLineColor),
         left: 0,
         bottom: 0,
-        // Doing the other way around crash on IE11 "''" https://github.com/cssinjs/jss/issues/242
+        // Doing the other way around crash on IE 11 "''" https://github.com/cssinjs/jss/issues/242
         content: '"\\00a0"',
         position: 'absolute',
         right: 0,
@@ -12601,7 +12605,7 @@ var styles = function styles(theme) {
       // Make the flex item shrink with Firefox
       minWidth: 0,
       width: '100%',
-      // Fix IE11 width issue
+      // Fix IE 11 width issue
       '&::-webkit-input-placeholder': placeholder,
       '&::-moz-placeholder': placeholder,
       // Firefox 19+
@@ -12716,7 +12720,7 @@ function (_React$Component) {
     };
 
     _this.handleFocus = function (event) {
-      // Fix a bug with IE11 where the focus/blur events are triggered
+      // Fix a bug with IE 11 where the focus/blur events are triggered
       // while the input is disabled.
       if (formControlState({
         props: _this.props,
@@ -13498,7 +13502,9 @@ Textarea.defaultProps = {
   rows: 1
 };
 
-var _default = (0, _withStyles.default)(styles)(Textarea);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiTextarea'
+})(Textarea);
 
 exports.default = _default;
 
@@ -16479,7 +16485,7 @@ var styles = function styles(theme) {
 
 exports.styles = styles;
 
-if ("development" !== 'production' && !_react.default.createContext) {
+if (true && !_react.default.createContext) {
   throw new Error('Material-UI: react@16.3.0 or greater is required.');
 }
 /**
@@ -16499,17 +16505,6 @@ function (_React$Component) {
     _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Modal).call(this));
     _this.mounted = false;
 
-    _this.handleRendered = function () {
-      _this.autoFocus(); // Fix a bug on Chrome where the scroll isn't initially 0.
-
-
-      _this.modalRef.scrollTop = 0;
-
-      if (_this.props.onRendered) {
-        _this.props.onRendered();
-      }
-    };
-
     _this.handleOpen = function () {
       var doc = (0, _ownerDocument.default)(_this.mountNode);
       var container = getContainer(_this.props.container, doc.body);
@@ -16518,6 +16513,34 @@ function (_React$Component) {
 
       doc.addEventListener('keydown', _this.handleDocumentKeyDown);
       doc.addEventListener('focus', _this.enforceFocus, true);
+
+      if (_this.dialogRef) {
+        _this.handleOpened();
+      }
+    };
+
+    _this.handleRendered = function () {
+      if (_this.props.onRendered) {
+        _this.props.onRendered();
+      }
+
+      if (_this.props.open) {
+        _this.handleOpened();
+      } else {
+        var doc = (0, _ownerDocument.default)(_this.mountNode);
+        var container = getContainer(_this.props.container, doc.body);
+
+        _this.props.manager.add((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this)), container);
+
+        _this.props.manager.remove((0, _assertThisInitialized2.default)((0, _assertThisInitialized2.default)(_this)));
+      }
+    };
+
+    _this.handleOpened = function () {
+      _this.autoFocus(); // Fix a bug on Chrome where the scroll isn't initially 0.
+
+
+      _this.modalRef.scrollTop = 0;
     };
 
     _this.handleClose = function () {
@@ -16534,8 +16557,6 @@ function (_React$Component) {
       _this.setState({
         exited: true
       });
-
-      _this.handleClose();
     };
 
     _this.handleBackdropClick = function (event) {
@@ -16553,12 +16574,8 @@ function (_React$Component) {
     };
 
     _this.handleDocumentKeyDown = function (event) {
-      if (!_this.isTopModal() || (0, _keycode.default)(event) !== 'esc') {
-        return;
-      } // Ignore events that have been `event.preventDefault()` marked.
-
-
-      if (event.defaultPrevented) {
+      // Ignore events that have been `event.preventDefault()` marked.
+      if ((0, _keycode.default)(event) !== 'esc' || !_this.isTopModal() || event.defaultPrevented) {
         return;
       }
 
@@ -16571,18 +16588,15 @@ function (_React$Component) {
       }
     };
 
-    _this.checkForFocus = function () {
-      _this.lastFocus = (0, _ownerDocument.default)(_this.mountNode).activeElement;
-    };
-
     _this.enforceFocus = function () {
-      if (_this.props.disableEnforceFocus || !_this.mounted || !_this.isTopModal()) {
+      // The Modal might not already be mounted.
+      if (!_this.isTopModal() || _this.props.disableEnforceFocus || !_this.mounted || !_this.dialogRef) {
         return;
       }
 
       var currentActiveElement = (0, _ownerDocument.default)(_this.mountNode).activeElement;
 
-      if (_this.dialogRef && !_this.dialogRef.contains(currentActiveElement)) {
+      if (!_this.dialogRef.contains(currentActiveElement)) {
         _this.dialogRef.focus();
       }
     };
@@ -16605,14 +16619,11 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (!prevProps.open && this.props.open) {
-        this.checkForFocus();
-      }
-
-      if (prevProps.open && !this.props.open && !getHasTransition(this.props)) {
-        // Otherwise handleExited will call this.
+      if (prevProps.open && !this.props.open) {
         this.handleClose();
       } else if (!prevProps.open && this.props.open) {
+        // check for focus
+        this.lastFocus = (0, _ownerDocument.default)(this.mountNode).activeElement;
         this.handleOpen();
       }
     }
@@ -16628,40 +16639,38 @@ function (_React$Component) {
   }, {
     key: "autoFocus",
     value: function autoFocus() {
-      if (this.props.disableAutoFocus) {
+      // We might render an empty child.
+      if (this.props.disableAutoFocus || !this.dialogRef) {
         return;
       }
 
       var currentActiveElement = (0, _ownerDocument.default)(this.mountNode).activeElement;
 
-      if (this.dialogRef && !this.dialogRef.contains(currentActiveElement)) {
-        this.lastFocus = currentActiveElement;
-
+      if (!this.dialogRef.contains(currentActiveElement)) {
         if (!this.dialogRef.hasAttribute('tabIndex')) {
            true ? (0, _warning.default)(false, ['Material-UI: the modal content node does not accept focus.', 'For the benefit of assistive technologies, ' + 'the tabIndex of the node is being set to "-1".'].join('\n')) : undefined;
           this.dialogRef.setAttribute('tabIndex', -1);
         }
 
+        this.lastFocus = currentActiveElement;
         this.dialogRef.focus();
       }
     }
   }, {
     key: "restoreLastFocus",
     value: function restoreLastFocus() {
-      if (this.props.disableRestoreFocus) {
+      if (this.props.disableRestoreFocus || !this.lastFocus) {
         return;
+      } // Not all elements in IE 11 have a focus method.
+      // Because IE 11 market share is low, we accept the restore focus being broken
+      // and we silent the issue.
+
+
+      if (this.lastFocus.focus) {
+        this.lastFocus.focus();
       }
 
-      if (this.lastFocus) {
-        // Not all elements in IE11 have a focus method.
-        // Because IE11 market share is low, we accept the restore focus being broken
-        // and we silent the issue.
-        if (this.lastFocus.focus) {
-          this.lastFocus.focus();
-        }
-
-        this.lastFocus = null;
-      }
+      this.lastFocus = null;
     }
   }, {
     key: "isTopModal",
@@ -16697,12 +16706,12 @@ function (_React$Component) {
           other = (0, _objectWithoutProperties2.default)(_this$props, ["BackdropComponent", "BackdropProps", "children", "classes", "className", "container", "disableAutoFocus", "disableBackdropClick", "disableEnforceFocus", "disableEscapeKeyDown", "disablePortal", "disableRestoreFocus", "hideBackdrop", "keepMounted", "manager", "onBackdropClick", "onClose", "onEscapeKeyDown", "onRendered", "open"]);
       var exited = this.state.exited;
       var hasTransition = getHasTransition(this.props);
-      var childProps = {};
 
       if (!keepMounted && !open && (!hasTransition || exited)) {
         return null;
-      } // It's a Transition like component
+      }
 
+      var childProps = {}; // It's a Transition like component
 
       if (hasTransition) {
         childProps.onExited = (0, _helpers.createChainedFunction)(this.handleExited, children.props.onExited);
@@ -16882,6 +16891,7 @@ Modal.propTypes =  true ? {
   open: _propTypes.default.bool.isRequired
 } : undefined;
 Modal.defaultProps = {
+  BackdropComponent: _Backdrop.default,
   disableAutoFocus: false,
   disableBackdropClick: false,
   disableEnforceFocus: false,
@@ -16891,8 +16901,7 @@ Modal.defaultProps = {
   hideBackdrop: false,
   keepMounted: false,
   // Modals don't open on the server so this won't conflict with concurrent requests.
-  manager: new _ModalManager.default(),
-  BackdropComponent: _Backdrop.default
+  manager: new _ModalManager.default()
 };
 
 var _default = (0, _withStyles.default)(styles, {
@@ -16981,11 +16990,11 @@ function setContainerStyle(data, container) {
   });
 }
 
-function removeContainerStyle(data, container) {
+function removeContainerStyle(data) {
   Object.keys(data.style).forEach(function (key) {
-    container.style[key] = data.style[key];
+    data.container.style[key] = data.style[key];
   });
-  var fixedNodes = (0, _ownerDocument.default)(container).querySelectorAll('.mui-fixed');
+  var fixedNodes = (0, _ownerDocument.default)(data.container).querySelectorAll('.mui-fixed');
 
   for (var i = 0; i < fixedNodes.length; i += 1) {
     fixedNodes[i].style.paddingRight = "".concat(data.prevPaddings[i], "px");
@@ -17013,10 +17022,11 @@ function () {
     this.hideSiblingNodes = hideSiblingNodes;
     this.handleContainerOverflow = handleContainerOverflow; // this.modals[modalIdx] = modal
 
-    this.modals = []; // this.containers[containerIdx] = container
-
-    this.containers = []; // this.data[containerIdx] = {
+    this.modals = []; // this.data[containerIdx] = {
     //   modals: [],
+    //   container,
+    //   overflowing,
+    //   prevPaddings,
     // }
 
     this.data = [];
@@ -17032,13 +17042,19 @@ function () {
       }
 
       modalIdx = this.modals.length;
-      this.modals.push(modal);
+      this.modals.push(modal); // If the modal we are adding is already in the DOM.
 
-      if (this.hideSiblingNodes) {
-        (0, _manageAriaHidden.hideSiblings)(container, modal.mountNode);
+      if (modal.modalRef) {
+        (0, _manageAriaHidden.ariaHidden)(modal.modalRef, false);
       }
 
-      var containerIdx = this.containers.indexOf(container);
+      if (this.hideSiblingNodes) {
+        (0, _manageAriaHidden.ariaHiddenSiblings)(container, modal.mountNode, modal.modalRef, true);
+      }
+
+      var containerIdx = findIndexOf(this.data, function (item) {
+        return item.container === container;
+      });
 
       if (containerIdx !== -1) {
         this.data[containerIdx].modals.push(modal);
@@ -17047,6 +17063,7 @@ function () {
 
       var data = {
         modals: [modal],
+        container: container,
         overflowing: (0, _isOverflowing.default)(container),
         prevPaddings: []
       };
@@ -17055,7 +17072,6 @@ function () {
         setContainerStyle(data, container);
       }
 
-      this.containers.push(container);
       this.data.push(data);
       return modalIdx;
     }
@@ -17072,24 +17088,27 @@ function () {
         return item.modals.indexOf(modal) !== -1;
       });
       var data = this.data[containerIdx];
-      var container = this.containers[containerIdx];
       data.modals.splice(data.modals.indexOf(modal), 1);
       this.modals.splice(modalIdx, 1); // If that was the last modal in a container, clean up the container.
 
       if (data.modals.length === 0) {
         if (this.handleContainerOverflow) {
-          removeContainerStyle(data, container);
+          removeContainerStyle(data);
+        } // In case the modal wasn't in the DOM yet.
+
+
+        if (modal.modalRef) {
+          (0, _manageAriaHidden.ariaHidden)(modal.modalRef, true);
         }
 
         if (this.hideSiblingNodes) {
-          (0, _manageAriaHidden.showSiblings)(container, modal.mountNode);
+          (0, _manageAriaHidden.ariaHiddenSiblings)(data.container, modal.mountNode, modal.modalRef, false);
         }
 
-        this.containers.splice(containerIdx, 1);
         this.data.splice(containerIdx, 1);
       } else if (this.hideSiblingNodes) {
         // Otherwise make sure the next top modal is visible to a screan reader.
-        (0, _manageAriaHidden.ariaHidden)(false, data.modals[data.modals.length - 1].mountNode);
+        (0, _manageAriaHidden.ariaHidden)(data.modals[data.modals.length - 1].modalRef, false);
       }
 
       return modalIdx;
@@ -17203,29 +17222,24 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ariaHidden = ariaHidden;
-exports.hideSiblings = hideSiblings;
-exports.showSiblings = showSiblings;
+exports.ariaHiddenSiblings = ariaHiddenSiblings;
 var BLACKLIST = ['template', 'script', 'style'];
 
 function isHidable(node) {
   return node.nodeType === 1 && BLACKLIST.indexOf(node.tagName.toLowerCase()) === -1;
 }
 
-function siblings(container, mount, callback) {
-  mount = [].concat(mount); // eslint-disable-line no-param-reassign
+function siblings(container, mount, currentNode, callback) {
+  var blacklist = [mount, currentNode]; // eslint-disable-line no-param-reassign
 
   [].forEach.call(container.children, function (node) {
-    if (mount.indexOf(node) === -1 && isHidable(node)) {
+    if (blacklist.indexOf(node) === -1 && isHidable(node)) {
       callback(node);
     }
   });
 }
 
-function ariaHidden(show, node) {
-  if (!node) {
-    return;
-  }
-
+function ariaHidden(node, show) {
   if (show) {
     node.setAttribute('aria-hidden', 'true');
   } else {
@@ -17233,15 +17247,9 @@ function ariaHidden(show, node) {
   }
 }
 
-function hideSiblings(container, mountNode) {
-  siblings(container, mountNode, function (node) {
-    return ariaHidden(true, node);
-  });
-}
-
-function showSiblings(container, mountNode) {
-  siblings(container, mountNode, function (node) {
-    return ariaHidden(false, node);
+function ariaHiddenSiblings(container, mountNode, currentNode, show) {
+  siblings(container, mountNode, currentNode, function (node) {
+    return ariaHidden(node, show);
   });
 }
 
@@ -17303,6 +17311,8 @@ var styles = function styles(theme) {
       paddingRight: 32,
       borderRadius: 0,
       // Reset
+      height: '1.1875em',
+      // Reset (19px), match the native input line-height
       width: 'calc(100% - 32px)',
       minWidth: 16,
       // So it doesn't collapse.
@@ -17318,7 +17328,7 @@ var styles = function styles(theme) {
         color: 'transparent',
         textShadow: '0 0 0 #000'
       },
-      // Remove IE11 arrow
+      // Remove IE 11 arrow
       '&::-ms-expand': {
         display: 'none'
       },
@@ -17342,6 +17352,8 @@ var styles = function styles(theme) {
     selectMenu: {
       width: 'auto',
       // Fix Safari textOverflow
+      height: 'auto',
+      // Reset
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -21412,7 +21424,7 @@ var styles = function styles(theme) {
 
 exports.styles = styles;
 
-if ("development" !== 'production' && !_react.default.createContext) {
+if (true && !_react.default.createContext) {
   throw new Error('Material-UI: react@16.3.0 or greater is required.');
 }
 
@@ -23784,7 +23796,7 @@ function reset() {
 /* istanbul ignore if */
 
 
-if ("development" !== 'production' && !_react.default.createContext) {
+if (true && !_react.default.createContext) {
   throw new Error('Material-UI: react@16.3.0 or greater is required.');
 }
 
@@ -24635,7 +24647,8 @@ var styles = function styles(theme) {
       minHeight: 48,
       flexShrink: 0,
       overflow: 'hidden',
-      whiteSpace: 'normal'
+      whiteSpace: 'normal',
+      textAlign: 'center'
     }, theme.breakpoints.up('md'), {
       fontSize: theme.typography.pxToRem(13),
       minWidth: 160
@@ -26917,7 +26930,9 @@ TabIndicator.propTypes =  true ? {
   color: _propTypes.default.oneOf(['primary', 'secondary'])
 } : undefined;
 
-var _default = (0, _withStyles.default)(styles)(TabIndicator);
+var _default = (0, _withStyles.default)(styles, {
+  name: 'MuiTabIndicator'
+})(TabIndicator);
 
 exports.default = _default;
 
@@ -30492,7 +30507,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Zoom__WEBPACK_IMPORTED_MODULE_105__ = __webpack_require__(/*! ./Zoom */ "./node_modules/@material-ui/core/Zoom/index.js");
 /* harmony import */ var _Zoom__WEBPACK_IMPORTED_MODULE_105___default = /*#__PURE__*/__webpack_require__.n(_Zoom__WEBPACK_IMPORTED_MODULE_105__);
 /* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "Zoom", function() { return _Zoom__WEBPACK_IMPORTED_MODULE_105___default.a; });
-/** @license Material-UI v3.2.2
+/** @license Material-UI v3.3.0
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -32134,31 +32149,17 @@ function createGenerateClassName() {
   var ruleCounter = 0;
   return function (rule, styleSheet) {
     ruleCounter += 1;
-     true ? (0, _warning.default)(ruleCounter < 1e10, ['Material-UI: you might have a memory leak.', 'The ruleCounter is not supposed to grow that much.'].join('')) : undefined; // Code branch the whole block at the expense of more code.
+     true ? (0, _warning.default)(ruleCounter < 1e10, ['Material-UI: you might have a memory leak.', 'The ruleCounter is not supposed to grow that much.'].join('')) : undefined;
 
-    if (dangerouslyUseGlobalCSS) {
-      if (styleSheet) {
-        if (styleSheet.options.name) {
-          return "".concat(styleSheet.options.name, "-").concat(rule.key);
-        }
-
-        if (styleSheet.options.classNamePrefix && "development" !== 'production') {
-          var prefix = safePrefix(styleSheet.options.classNamePrefix);
-          return "".concat(prefix, "-").concat(rule.key, "-").concat(seed).concat(ruleCounter);
-        }
-      }
-
-      if (false) {}
-
-      return "".concat(rule.key, "-").concat(seed).concat(ruleCounter);
+    if (dangerouslyUseGlobalCSS && styleSheet && styleSheet.options.name) {
+      return "".concat(styleSheet.options.name, "-").concat(rule.key);
     }
 
     if (false) {}
 
     if (styleSheet && styleSheet.options.classNamePrefix) {
-      var _prefix = safePrefix(styleSheet.options.classNamePrefix);
-
-      return "".concat(_prefix, "-").concat(rule.key, "-").concat(seed).concat(ruleCounter);
+      var prefix = safePrefix(styleSheet.options.classNamePrefix);
+      return "".concat(prefix, "-").concat(rule.key, "-").concat(seed).concat(ruleCounter);
     }
 
     return "".concat(rule.key, "-").concat(seed).concat(ruleCounter);
@@ -32463,7 +32464,7 @@ function createPalette(palette) {
       color.main = color[mainShade];
     }
 
-    if ("development" !== 'production' && !color.main) {
+    if (true && !color.main) {
       throw new Error(['Material-UI: the color provided to augmentColor(color) is invalid.', "The color object needs to have a `main` property or a `".concat(mainShade, "` property.")].join('\n'));
     }
 
@@ -32570,7 +32571,7 @@ function round(value) {
 var caseAllCaps = {
   textTransform: 'uppercase'
 };
-var defaultFontFamiliy = '"Roboto", "Helvetica", "Arial", sans-serif';
+var defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
 /**
  * @see @link{https://material.io/design/typography/the-type-system.html}
  * @see @link{https://material.io/design/typography/understanding-typography.html}
@@ -32579,7 +32580,7 @@ var defaultFontFamiliy = '"Roboto", "Helvetica", "Arial", sans-serif';
 function createTypography(palette, typography) {
   var _ref = typeof typography === 'function' ? typography(palette) : typography,
       _ref$fontFamily = _ref.fontFamily,
-      fontFamily = _ref$fontFamily === void 0 ? defaultFontFamiliy : _ref$fontFamily,
+      fontFamily = _ref$fontFamily === void 0 ? defaultFontFamily : _ref$fontFamily,
       _ref$fontSize = _ref.fontSize,
       fontSize = _ref$fontSize === void 0 ? 14 : _ref$fontSize,
       _ref$fontWeightLight = _ref.fontWeightLight,
@@ -32612,7 +32613,7 @@ function createTypography(palette, typography) {
       fontSize: pxToRem(size),
       // Unitless following http://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/
       lineHeight: lineHeight
-    }, fontFamily === defaultFontFamiliy ? {
+    }, fontFamily === defaultFontFamily ? {
       letterSpacing: "".concat(round(letterSpacing / size), "em")
     } : {}, casing, allVariants);
   };
@@ -32953,11 +32954,13 @@ var _jssVendorPrefixer = _interopRequireDefault(__webpack_require__(/*! jss-vend
 
 var _jssPropsSort = _interopRequireDefault(__webpack_require__(/*! jss-props-sort */ "./node_modules/jss-props-sort/lib/index.js"));
 
-// Subset of jss-preset-default with only the plugins the Material-UI
-// components are using.
+// Subset of jss-preset-default with only the plugins the Material-UI components are using.
 function jssPreset() {
   return {
-    plugins: [(0, _jssGlobal.default)(), (0, _jssNested.default)(), (0, _jssCamelCase.default)(), (0, _jssDefaultUnit.default)(), (0, _jssVendorPrefixer.default)(), (0, _jssPropsSort.default)()]
+    plugins: [(0, _jssGlobal.default)(), (0, _jssNested.default)(), (0, _jssCamelCase.default)(), (0, _jssDefaultUnit.default)(), // Disable the vendor prefixer server-side, it does nothing.
+    // This way, we can get a performance boost.
+    // In the documentation, we are using `autoprefixer` to solve this problem.
+    typeof window === 'undefined' ? null : (0, _jssVendorPrefixer.default)(), (0, _jssPropsSort.default)()]
   };
 }
 
@@ -32999,16 +33002,16 @@ function mergeClasses() {
     return baseClasses;
   }
 
-  return (0, _extends2.default)({}, baseClasses, Object.keys(newClasses).reduce(function (accumulator, key) {
-     true ? (0, _warning.default)(baseClasses[key] || !newClasses[key], ["Material-UI: the key `".concat(key, "` ") + "provided to the classes property is not implemented in ".concat((0, _getDisplayName.default)(Component), "."), "You can only override one of the following: ".concat(Object.keys(baseClasses).join(','))].join('\n')) : undefined;
+  var nextClasses = (0, _extends2.default)({}, baseClasses);
+  Object.keys(newClasses).forEach(function (key) {
+     true ? (0, _warning.default)(baseClasses[key] || !newClasses[key], ["Material-UI: the key `".concat(key, "` ") + "provided to the classes property is not implemented in ".concat((0, _getDisplayName.default)(Component), "."), "You can only override one of the following: ".concat(Object.keys(baseClasses).join(','), ".")].join('\n')) : undefined;
      true ? (0, _warning.default)(!newClasses[key] || typeof newClasses[key] === 'string', ["Material-UI: the key `".concat(key, "` ") + "provided to the classes property is not valid for ".concat((0, _getDisplayName.default)(Component), "."), "You need to provide a non empty string instead of: ".concat(newClasses[key], ".")].join('\n')) : undefined;
 
     if (newClasses[key]) {
-      accumulator[key] = "".concat(baseClasses[key], " ").concat(newClasses[key]);
+      nextClasses[key] = "".concat(baseClasses[key], " ").concat(newClasses[key]);
     }
-
-    return accumulator;
-  }, {}));
+  });
+  return nextClasses;
 }
 
 var _default = mergeClasses;
@@ -33620,7 +33623,8 @@ var withStyles = function withStyles(stylesOrCreator) {
           var styles = this.stylesCreatorSaved.create(theme, name);
           var meta = name;
 
-          if ("development" !== 'production' && !meta) {
+          if (true && !meta) {
+            // Provide a better DX outside production.
             meta = (0, _getDisplayName.default)(Component);
              true ? (0, _warning.default)(typeof meta === 'string', ['Material-UI: the component displayName is invalid. It needs to be a string.', "Please fix the following component: ".concat(Component, ".")].join('\n')) : undefined;
           }
@@ -33631,7 +33635,7 @@ var withStyles = function withStyles(stylesOrCreator) {
             flip: typeof flip === 'boolean' ? flip : theme.direction === 'rtl',
             link: false
           }, this.sheetOptions, this.stylesCreatorSaved.options, {
-            name: name
+            name: name || Component.displayName
           }, styleSheetOptions));
           return sheet;
         }
@@ -34014,8 +34018,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getFunctionName = getFunctionName;
 exports.default = void 0;
-// Fork of recompose/getDisplayName with added IE11 support
-// Simplified polyfill for IE11 support
+// Fork of recompose/getDisplayName with added IE 11 support
+// Simplified polyfill for IE 11 support
 // https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
 var fnNameMatchRegex = /^\s*function(?:\s|\s*\/\*.*\*\/\s*)+([^(\s/]*)\s*/;
 
@@ -34068,7 +34072,7 @@ var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/hel
 var _warning = _interopRequireDefault(__webpack_require__(/*! warning */ "./node_modules/warning/warning.js"));
 
 function capitalize(string) {
-  if ("development" !== 'production' && typeof string !== 'string') {
+  if (true && typeof string !== 'string') {
     throw new Error('Material-UI: capitalize(string) expects a string argument.');
   }
 
@@ -34721,7 +34725,7 @@ module.exports = function xhrAdapter(config) {
     // For IE 8/9 CORS support
     // Only supports POST and GET calls and doesn't returns the response headers.
     // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
-    if ("development" !== 'test' &&
+    if (true &&
         typeof window !== 'undefined' &&
         window.XDomainRequest && !('withCredentials' in request) &&
         !isURLSameOrigin(config.url)) {
@@ -37232,7 +37236,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		return classes.join(' ');
 	}
 
-	if (typeof module !== 'undefined' && module.exports) {
+	if (true && module.exports) {
 		classNames.default = classNames;
 		module.exports = classNames;
 	} else if (true) {
@@ -69731,7 +69735,7 @@ module.exports = nativeKeys;
 /* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__(/*! ./_freeGlobal */ "./node_modules/lodash/_freeGlobal.js");
 
 /** Detect free variable `exports`. */
-var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
+var freeExports = true && exports && !exports.nodeType && exports;
 
 /** Detect free variable `module`. */
 var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
@@ -70829,7 +70833,7 @@ module.exports = isArrayLike;
     stubFalse = __webpack_require__(/*! ./stubFalse */ "./node_modules/lodash/stubFalse.js");
 
 /** Detect free variable `exports`. */
-var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
+var freeExports = true && exports && !exports.nodeType && exports;
 
 /** Detect free variable `module`. */
 var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
@@ -75069,7 +75073,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
           );
           err.name = 'Invariant Violation';
           throw err;
-        } else if ("development" !== 'production' && typeof console !== 'undefined') {
+        } else if (true && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
           if (
