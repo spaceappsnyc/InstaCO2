@@ -20,26 +20,3 @@ We were inspired by previous years implementations of Clarifai and wanted to try
 # RESULT
 We are incredibly excited to present InstaCO2 to you. We strongly believe that reaching the audience that does not naturally seek out ways to make a positive change is the the best way to generate a larger galactic impact. 
 
-# TODO
-## Results page:
-
-* clean up radar chart (Jordane)
-* carbon numbers indicative ... counting number up to (Sam)
-* static, what next page (?)
-
-## styling:
-
-* responsive design (?)
-* title icon / brand icon (Jordane)
-* avatar on results page (Jordane - need to talk)
-
-## video:
-
-* skit video / role play to demonstrate use case
-* power point / keynote w/ music + narration
-* focus more on concept/motivation
-* list of 'scene' / video shots to splice
-
-1. Demonstrate the information gap
-2. Motivation to connect with more people, small impact
-3. Low effort, real change
